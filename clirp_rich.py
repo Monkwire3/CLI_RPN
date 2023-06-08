@@ -1,9 +1,12 @@
 from rich import print
 from rich.panel import Panel
 from rich.layout import Layout
+from rich.live import Live
+from rich.prompt import Prompt
+import time
+
 
 def main():
-    # print(Panel("[Blue]Welcome to Clirp: A RPN calculator for your terminal!"))
     layout = Layout()
     layout.split_column(
         Layout(name="upper"),
@@ -14,5 +17,11 @@ def main():
     )
     layout["upper"].ratio = 1
     layout["lower"].ratio = 5
-    print(layout)
+    with Live(layout, refresh_per_second=4):
+        for i in range(10):
+            layout["lower"].update(Panel(f"[blue]{i}"))
+            time.sleep(1)
+            user_input = Prompt.ask("")
+            layout["lower"].update(Panel(f"[green]{user_input}"))
+            time.sleep(1)
 main()
