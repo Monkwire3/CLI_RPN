@@ -1,7 +1,6 @@
 import curses 
 import os
 
-
 print('Welcome to CLIRP: An rpn calculator for your terminal!')
 def buildOverlay(win):
     win.nodelay(True)
@@ -27,8 +26,10 @@ def addPad():
 
 
 def renderHeader(win):
-    r, c = win.getmaxyx()
-    win.addstr(0, 0, f"{'===' * ((r // 2) - 10)} <HEADER> {'===' * ((r // 2) - 10)}") 
+    # r, c = win.getmaxyx()
+    # win.addstr(0, 0, f"{'=' * ((c // 2) - 6)} <HEADER> {'=' * ((c // 2) - 6)}") 
+
+    win.border('ls', 'rs', 'ts', 'bs', 'tl', 'bl', 'br')
 
 
 
@@ -42,7 +43,10 @@ def main(win):
     while True:
         try:
             key = win.getkey()
+            if win.getch() == curses.KEY_BACKSPACE:
+                stirng += 'BACKSPACE!!!!'
             string += key
+            # string += key if len(key) == 1 else ''
             win.clear()
             win.addstr(10, 10, string)
             renderHeader(win)
