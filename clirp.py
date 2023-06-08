@@ -44,7 +44,7 @@ def main(win):
         try:
             key = win.getkey()
             if win.getch() == curses.KEY_BACKSPACE:
-                stirng += 'BACKSPACE!!!!'
+                string += 'BACKSPACE!!!!'
             string += key
             # string += key if len(key) == 1 else ''
             win.clear()
