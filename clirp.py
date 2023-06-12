@@ -7,6 +7,7 @@ from rich.console import Console
 from rich.console import Capture
 import keyboard
 import time
+from RPNStack import RPNStack
 
 
 def main():
@@ -24,6 +25,12 @@ def main():
     )
     layout["upper"].ratio = 1
     layout["lower"].ratio = 5
+
+    stack = RPNStack()
+    stack.push(1)
+    stack.push(2)
+    stack.push(3)
+    stack.print()
 
     
 
