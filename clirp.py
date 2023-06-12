@@ -36,7 +36,7 @@ def main():
 
     while True:
         name = Prompt.ask("> ")
-        layout["lower"].update(Panel(f"[blue]{name}"))
+        layout["lower"].update(Panel(f"[blue]{stack}"))
         console.log(layout)
 
                 
